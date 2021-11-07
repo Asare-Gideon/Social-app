@@ -19,7 +19,8 @@ const style = StyleSheet.create({
     justifyContent: "center",
     fontFamily: "space-mono",
     backgroundColor: "yellow"
-  }
+  },
+
 })
 
 export default Home

@@ -2,7 +2,22 @@ import { Dimensions } from 'react-native';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
+export const Colors = {
+  // base colors
+  primary: "#f7cf21", // green
+  secondary: "#cb9308", // gray
 
+  // colors
+  black: "#1E1F20",
+  white: "#FFFFFF",
+
+  lightGray: "#F5F5F6",
+  lightGray2: "#F6F6F7",
+  lightGray3: "#EFEFF1",
+  lightGray4: "#F8F8F9",
+  transparent: "transparent",
+  darkgray: "#898C95",
+};
 export const Sizes = {
     width,
     height,
@@ -68,5 +83,5 @@ export const Fonts = {
     lineHeight: 22,
   },
 };
-const Layout = {Fonts, Sizes}
+const Layout = {Fonts, Sizes, Colors}
 export default Layout;

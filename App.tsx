@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import Home from './screens/Home';
 import IntroScreen from './screens/IntroScreen';
+import Signup from './screens/Signup';
 
 
 
@@ -17,7 +18,7 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <IntroScreen />
+        <Signup />
         <StatusBar />
       </SafeAreaProvider>
     );

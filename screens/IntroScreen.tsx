@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
-import {Sizes, Fonts} from "../constants/Layout"
+import {Sizes, Fonts,Colors} from "../constants/Layout"
 import images from "../constants/Images"
 
 const IntroScreen = () => {
@@ -54,7 +54,7 @@ const style = StyleSheet.create({
     justifyContent: "center"
   },
   btn : {
-      backgroundColor: "white",
+      backgroundColor: Colors.white,
       justifyContent: "center",
       alignItems: "center",
       paddingTop: 8,
@@ -64,13 +64,13 @@ const style = StyleSheet.create({
 
   },
   text: {
-    ...Fonts.body2,
-    color: "black"
+    ...Fonts.style,
+    color: Colors.darkgray,
   },
   heading: {
     ...Fonts.style2,
     textAlign: "center",
-    color: "white"
+    color: Colors.white
   }
 })
 
