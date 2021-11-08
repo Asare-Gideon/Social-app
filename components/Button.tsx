@@ -9,10 +9,10 @@ interface Props {
   color? : string
 }
 
-const Button: React.FC<Props> = ({ title, onPress }) => {
+const Button: React.FC<Props> = ({ title, onPress,BackgroundColor,color }) => {
   return (
-    <TouchableOpacity style={style.btn} onPress={onPress}>
-      <Text style={style.text}>{title}</Text>
+    <TouchableOpacity style={[style.btn, {backgroundColor:BackgroundColor}]} onPress={onPress}>
+      <Text style={[style.text,{color: color}]}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -21,14 +21,14 @@ const style = StyleSheet.create({
       backgroundColor: Colors.white,
       justifyContent: "center",
       alignItems: "center",
-      paddingTop: 8,
-      paddingBottom: 8,
+      paddingTop: 9,
+      paddingBottom: 9,
       borderRadius: Sizes.radius,
       marginBottom: Sizes.base *3
 
   },
   text: {
-    ...Fonts.style,
+    ...Fonts.h4,
     color: Colors.darkgray,
   },
 });
