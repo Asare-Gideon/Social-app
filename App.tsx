@@ -1,26 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import useCachedResources from './hooks/useCachedResources';
-import Home from './screens/Home';
-import IntroScreen from './screens/IntroScreen';
-import Signup from './screens/Signup';
-
-
+import useCachedResources from "./hooks/useCachedResources";
+import { NavigationContainer } from "@react-navigation/native";
+import Initital from "./navigation/Initital";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
-  
 
   if (!isLoadingComplete) {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <Signup />
+      <NavigationContainer>
+        <Initital />
         <StatusBar />
-      </SafeAreaProvider>
+      </NavigationContainer>
     );
   }
 }

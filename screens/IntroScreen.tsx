@@ -2,8 +2,15 @@ import React from 'react'
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
 import {Sizes, Fonts,Colors} from "../constants/Layout"
 import images from "../constants/Images"
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-const IntroScreen = () => {
+type myParams = {
+  Login : undefined,
+  Signup : undefined
+}
+type prop = NativeStackScreenProps<myParams>
+
+const IntroScreen = ({navigation}: prop) => {
     return (
         <View style={style.main}>
          <ImageBackground source={images.introScreen} style={style.imgageContainer}>
@@ -12,10 +19,10 @@ const IntroScreen = () => {
               <Text style={style.heading}>Bring the best of your authentic self to every opportunity</Text>
               </View>
                 <View style={style.btnCont}>
-                <TouchableOpacity style={style.btn} onPress={() => console.log("hello")}>
+                <TouchableOpacity style={style.btn} onPress={() => navigation.navigate("Signup")}>
                     <Text style={style.text}>Sign up</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={style.btn} onPress={() => console.log("hello")}>
+                <TouchableOpacity style={style.btn} onPress={() => navigation.navigate('Login')}>
                     <Text style={style.text}>Login</Text>
                 </TouchableOpacity>
                 </View>

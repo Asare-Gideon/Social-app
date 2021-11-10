@@ -26,7 +26,7 @@ interface dataType {
   password: data;
   validName: boolean;
 }
-const Signup = () => {
+const Login = () => {
   const [data, setData] = useState<dataType>({
     name: undefined,
     email: undefined,
@@ -51,8 +51,8 @@ const Signup = () => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.main} 
-     behavior={Platform.OS === "ios" ? "padding" : "height"}
+    <KeyboardAvoidingView style={styles.main}
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
             enabled
     >
       <View style={styles.topCont}>
@@ -60,7 +60,7 @@ const Signup = () => {
           <View style={styles.imgSub}>
             <Image source={img.welcome} style={styles.img} />
           </View>
-          <Text style={styles.topText}>Welcome!</Text>
+          <Text style={styles.topText}>Stay hungry, stay folish</Text>
         </View>
       </View>
       <Animatable.View
@@ -69,29 +69,8 @@ const Signup = () => {
         style={styles.botCont}
       >
           
-            <ScrollView style={{ height: "100%" }}>
-              <View style={styles.inputContent}>
-                <FontAwesome style={styles.icons} name="user-o" size={20} />
-                <TextInput
-                  style={styles.input}
-                  placeholder="Enter your name"
-                  value={data.name}
-                  onChangeText={(e) => handleNameChange(e)}
-                />
-                {data.validName ? (
-                  <Animatable.View
-                    style={styles.icons}
-                    animation="bounceIn"
-                    duration={800}
-                  >
-                    <Feather
-                      name="check-circle"
-                      size={24}
-                      color={Colors.primary}
-                    />
-                  </Animatable.View>
-                ) : null}
-              </View>
+            <ScrollView style={{ height: "100%", paddingBottom: 30 }}>
+              
               <View style={styles.inputContent}>
                 <FontAwesome style={styles.icons} name="envelope-o" size={20} />
                 <TextInput
@@ -124,28 +103,16 @@ const Signup = () => {
                   <Feather name="eye-off" size={25} color={Colors.primary} />
                 </TouchableOpacity>
               </View>
-              <View style={[styles.inputContent]}>
-                <Feather style={styles.icons} name="lock" size={20} />
-                <TextInput
-                  style={styles.input}
-                  placeholder="Comfirm password"
-                  value={data.email}
-                  onChangeText={(e) => handleNameChange(e)}
-                />
-                <TouchableOpacity>
-                  <Feather name="eye-off" size={25} color={Colors.primary} />
-                </TouchableOpacity>
-              </View>
               <View style={styles.already}>
                 <TouchableOpacity>
                   <Text style={styles.alreadyText}>
-                    Already have an account
+                    Create Account
                   </Text>
                 </TouchableOpacity>
               </View>
               <View style={{ marginTop: 13 }}>
                 <Button
-                  title="Create Account"
+                  title="Login"
                   BackgroundColor={Colors.secondary}
                   color={Colors.white}
                 />
@@ -177,7 +144,6 @@ const styles = StyleSheet.create({
   },
   inputCont: {
     marginTop: 20,
-    paddingBottom: 40,
   },
   inputContent: {
     flexDirection: "row",
@@ -198,9 +164,6 @@ const styles = StyleSheet.create({
   },
   icons: {
     marginTop: 3,
-  },
-  last: {
-    marginBottom: 300,
   },
   already: {
     width: "100%",
@@ -231,9 +194,10 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   topText: {
-    ...Fonts.h2,
+    ...Fonts.style2,
     color: Colors.white,
+    marginTop: 10
   },
 });
 
-export default Signup;
+export default Login;
