@@ -5,17 +5,28 @@ import { Sizes, Colors, Fonts } from "../constants/Layout";
 import { postProp } from "../constants/Types";
 
 const Post = ({ title, image, description }: postProp) => {
+  const [isWidth, setIsWidth] = React.useState<Boolean>(false);
+
+ React.useEffect(() => {
+   if(description)
+  if(description.length > 45) {
+    setIsWidth(true)
+  }
+   
+ }, []); 
+
   return (
     <View
       style={{
         paddingTop: Sizes.padding + 5,
+          width: Sizes.width - 30,
+          position: "relative",
+          overflow: "hidden"
       }}
     >
       <View
         style={{
-          width: Sizes.width - 30,
           height: 250,
-          position: "relative",
           elevation: 5,
           backgroundColor: Colors.lightGray2,
           borderRadius: 8,
@@ -34,8 +45,9 @@ const Post = ({ title, image, description }: postProp) => {
         <View
           style={{
             flexDirection: "row",
-            justifyContent: "space-between",
-            paddingTop: 4
+            justifyContent: "space-around",
+            paddingTop: 4,
+            alignItems: "center",
           }}
         >
           <Text
@@ -43,10 +55,10 @@ const Post = ({ title, image, description }: postProp) => {
               ...Fonts.h3,
               color: Colors.darkgray,
               width: "60%",
-              paddingTop: 4,
+              paddingTop: 6,
             }}
           >
-            {title}
+            {title? title: "Check this out"}
           </Text>
 
           <View
@@ -54,19 +66,21 @@ const Post = ({ title, image, description }: postProp) => {
               flexDirection: "row",
               paddingTop: 10,
               paddingLeft: 10,
-              paddingRight: 10
+              paddingRight: 10,
+              alignItems: "center",
             }}
           >
             <TouchableOpacity
               style={{
                 flexDirection: "row",
                 marginRight: 10,
+                alignItems: "center",
               }}
             >
-              <AntDesign name="hearto" size={20} />
+              <AntDesign name="hearto" size={25} />
               <Text
                 style={{
-                  ...Fonts.body5,
+                  ...Fonts.body3,
                   color: Colors.darkgray,
                   marginLeft: 4,
                 }}
@@ -79,10 +93,10 @@ const Post = ({ title, image, description }: postProp) => {
                 flexDirection: "row",
               }}
             >
-              <Ionicons name="chatbubble-ellipses-outline" size={20} />
+              <Ionicons name="chatbubble-ellipses-outline" size={25} />
               <Text
                 style={{
-                  ...Fonts.body5,
+                  ...Fonts.body3,
                   color: Colors.darkgray,
                   marginLeft: 4,
                 }}
@@ -93,7 +107,24 @@ const Post = ({ title, image, description }: postProp) => {
           </View>
         </View>
         <View>
-          <Text>hello there</Text>
+          {isWidth ? (
+            <Text
+              style={{
+                ...Fonts.body3,
+                paddingTop: 5,
+              }}
+            >
+             {description} 
+            </Text>
+          ) : (
+            <Text style={{
+              ...Fonts.body3,
+              marginTop: -3,
+              paddingTop: 0,
+              paddingLeft: 2,
+              width: "60%"
+            }}>{description}</Text>
+          )}
         </View>
       </View>
     </View>

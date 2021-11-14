@@ -80,7 +80,7 @@ const Feeds = () => {
 
    <ScrollView>     
      <View style={styles.postCont}>
-       <Post image={images.post[0]} title="Concept designed" description="" />
+       <Post image={images.post[0]} title="Concept designed" description="how to stay constitent to this end " />
        <Post image={images.post[1]} title="Concept designed" description="" />
      </View>
      </ScrollView>

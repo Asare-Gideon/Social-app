@@ -31,3 +31,9 @@ export interface friendsProps {
   image : ImageSourcePropType,
   title : string,
 }
+
+export interface postProp {
+  image : ImageSourcePropType,
+  title?: String,
+  description? : String,
+}
