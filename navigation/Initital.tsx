@@ -4,8 +4,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import IntroScreen from "../screens/IntroScreen";
 import Signup from "../screens/Signup";
 import Login from "../screens/Login";
+import { MainStackParams } from "../constants/Types";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<MainStackParams>();
 const Initital = () => {
   return (
     <Stack.Navigator 

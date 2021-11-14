@@ -2,15 +2,10 @@ import React from 'react'
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
 import {Sizes, Fonts,Colors} from "../constants/Layout"
 import images from "../constants/Images"
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { initialPageProp } from '../constants/Types'
 
-type myParams = {
-  Login : undefined,
-  Signup : undefined
-}
-type prop = NativeStackScreenProps<myParams>
-
-const IntroScreen = ({navigation}: prop) => {
+const IntroScreen = ({navigation, route}: initialPageProp) => {
+  
     return (
         <View style={style.main}>
          <ImageBackground source={images.introScreen} style={style.imgageContainer}>

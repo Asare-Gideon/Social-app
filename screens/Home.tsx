@@ -1,12 +1,19 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { MainpageParams } from '../constants/Types'
+import Feeds from './Feeds'
 
+const Stack = createNativeStackNavigator<MainpageParams>();
 const Home: React.FC = () => {
     return (
-        <View style={style.main}>
-            <Text>welcome home</Text>
-            <Text>let's do this </Text>
-        </View>
+     <Stack.Navigator
+     screenOptions={{
+       headerShown: false
+     }}
+     >
+       <Stack.Screen name="Feeds" component={Feeds} />
+     </Stack.Navigator> 
     )
 }
 
