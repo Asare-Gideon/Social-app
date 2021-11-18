@@ -17,6 +17,7 @@ export const Colors = {
   lightGray4: "#F8F8F9",
   transparent: "transparent",
   darkgray: "#555555",
+  deepDarkGray : "#8f8f8f"
 };
 export const Sizes = {
     width,

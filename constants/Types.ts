@@ -1,6 +1,7 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { NativeStackNavigationProp, NativeStackScreenProps } from "@react-navigation/native-stack"
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
 import { ImageSourcePropType } from "react-native";
+import { RouteProp } from "@react-navigation/core";
 
 
 export type MainStackParams = {
@@ -22,10 +23,10 @@ export type homePageProp =BottomTabScreenProps<HomeTabParams, "Home">
 
 export type MainpageParams = {
   Feeds : undefined;
-  Details : undefined;
+  ViewImage : {description: String | undefined, image : ImageSourcePropType}
 }
 
-export type mainPageProp = NativeStackScreenProps<MainpageParams, "Feeds">
+export type feedProp = NativeStackScreenProps<MainpageParams, "Feeds">
 
 export interface friendsProps {
   image : ImageSourcePropType,
@@ -35,5 +36,19 @@ export interface friendsProps {
 export interface postProp {
   image : ImageSourcePropType,
   title?: String,
-  description? : String,
+  description? : String | undefined,
+  navigation :   NativeStackNavigationProp<MainpageParams, "Feeds">;
+  handle? : () => void;
+}
+
+export interface commentPostProp {
+  image: ImageSourcePropType,
+  description: String,
+  name: String;
+  like? : number | String;
+  
+}
+export interface viewImageProp {
+  route: RouteProp<MainpageParams, "Feeds">;
+  navigation :   NativeStackNavigationProp<MainpageParams, "Feeds">;
 }

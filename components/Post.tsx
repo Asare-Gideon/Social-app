@@ -4,27 +4,32 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Sizes, Colors, Fonts } from "../constants/Layout";
 import { postProp } from "../constants/Types";
 
-const Post = ({ title, image, description }: postProp) => {
+const Post = ({ title, image, description, navigation, handle }: postProp) => {
   const [isWidth, setIsWidth] = React.useState<Boolean>(false);
 
- React.useEffect(() => {
-   if(description)
-  if(description.length > 45) {
-    setIsWidth(true)
-  }
-   
- }, []); 
+  React.useEffect(() => {
+    if (description)
+      if (description.length > 45) {
+        setIsWidth(true);
+      }
+  }, []);
 
   return (
     <View
       style={{
         paddingTop: Sizes.padding + 5,
-          width: Sizes.width - 30,
-          position: "relative",
-          overflow: "hidden"
+        width: Sizes.width - 30,
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <View
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("ViewImage", {
+            image,
+            description,
+          })
+        }
         style={{
           height: 250,
           elevation: 5,
@@ -40,7 +45,7 @@ const Post = ({ title, image, description }: postProp) => {
             borderRadius: 8,
           }}
         />
-      </View>
+      </TouchableOpacity>
       <View>
         <View
           style={{
@@ -58,7 +63,7 @@ const Post = ({ title, image, description }: postProp) => {
               paddingTop: 6,
             }}
           >
-            {title? title: "Check this out"}
+            {title ? title : "Check this out"}
           </Text>
 
           <View
@@ -89,6 +94,7 @@ const Post = ({ title, image, description }: postProp) => {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
+              onPress={handle}
               style={{
                 flexDirection: "row",
               }}
@@ -114,16 +120,20 @@ const Post = ({ title, image, description }: postProp) => {
                 paddingTop: 5,
               }}
             >
-             {description} 
+              {description}
             </Text>
           ) : (
-            <Text style={{
-              ...Fonts.body3,
-              marginTop: -3,
-              paddingTop: 0,
-              paddingLeft: 2,
-              width: "60%"
-            }}>{description}</Text>
+            <Text
+              style={{
+                ...Fonts.body3,
+                marginTop: -3,
+                paddingTop: 0,
+                paddingLeft: 2,
+                width: "60%",
+              }}
+            >
+              {description}
+            </Text>
           )}
         </View>
       </View>
