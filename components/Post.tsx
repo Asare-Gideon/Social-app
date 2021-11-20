@@ -21,6 +21,7 @@ const Post = ({ title, image, description, navigation, handle }: postProp) => {
         width: Sizes.width - 30,
         position: "relative",
         overflow: "hidden",
+        paddingBottom: 10
       }}
     >
       <TouchableOpacity

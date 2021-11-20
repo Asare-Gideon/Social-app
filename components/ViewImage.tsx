@@ -2,7 +2,7 @@ import { Entypo } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View, ImageBackground, TouchableOpacity } from "react-native";
 import images from "../constants/Images";
-import { Sizes } from "../constants/Layout";
+import { Colors, Fonts, Sizes } from "../constants/Layout";
 import { viewImageProp } from "../constants/Types";
 
 const ViewImage = ({route, navigation,}: viewImageProp) => {
@@ -25,6 +25,25 @@ const {description, image} = route.params as any;
     }}>
       <Entypo name="dots-three-vertical" size={22} />
     </TouchableOpacity>
+ 
+    <View style={
+      {
+        position: "absolute",
+        bottom: 90,
+        width: "100%",
+        alignItems: "center"
+      }
+    }>
+      <Text
+      style={{
+        width: "80%",
+        color: Colors.white,
+        ...Fonts.body3,
+        textAlign: "center"
+      }}
+      >{description}</Text>
+    </View>
+
     </ImageBackground>
     
   </View>

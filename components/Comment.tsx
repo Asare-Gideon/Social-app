@@ -10,11 +10,13 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
+  FlatList,
 } from "react-native";
 import { Colors, Fonts, Sizes } from "../constants/Layout";
-import CommentPost from "../components/commentPost"
+import CommentPost from "../components/commentPost";
 import images from "../constants/Images";
 import Input from "./Input";
+import { commentData, postData } from "../constants/data";
 
 interface commentProp {
   visibility: boolean;
@@ -22,6 +24,16 @@ interface commentProp {
 }
 const Comment = ({ visibility, handle }: commentProp) => {
   const [modalVisible, setModalVisible] = useState(visibility);
+
+  const rederCommentPost = ({ item }: any) => (
+    <CommentPost
+      like={item.like}
+      name={item.name}
+      description={item.description}
+      image={item.image}
+    />
+  );
+
   return (
     <Modal
       animationType="slide"
@@ -34,32 +46,39 @@ const Comment = ({ visibility, handle }: commentProp) => {
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <View style={styles.header}>
-            <TouchableOpacity
-            style={styles.closeBtn}
-            onPress={handle}
-            >
-              <FontAwesome name="chevron-down" size={23} color={Colors.darkgray} />
+            <TouchableOpacity style={styles.closeBtn} onPress={handle}>
+              <FontAwesome
+                name="chevron-down"
+                size={23}
+                color={Colors.darkgray}
+              />
             </TouchableOpacity>
             <Text style={styles.headerText}>Comments</Text>
           </View>
 
-        <ScrollView style={styles.content}>
-       <View style={styles.description}>
-         <CommentPost  name="Majesty" description="how to stay constitent to this end dkdkd deleldlfl ldkld" image={images.post[0]} />
-       </View>
+          <ScrollView style={styles.content}>
+            <View style={styles.description}>
+              <CommentPost
+                name="Majesty"
+                description="how to stay constitent to this end dkdkd deleldlfl ldkld"
+                image={images.post[0]}
+              />
+            </View>
 
-       <View>
-          <CommentPost like={4}  name="Majesty" description="how to stay consistent to this end dkdkd deleldlfl ldkld" image={images.post[1]} />
-          <CommentPost like={4}  name="Majesty" description="how to stay consistent to this end dkdkd deleldlfl ldkld" image={images.friends[0]} />
-          <CommentPost like={4}  name="Majesty" description="how to stay consistent to this end dkdkd deleldlfl ldkld" image={images.friends[1]} />
-          <CommentPost like={4}  name="Majesty" description="how to stay consistent to this end dkdkd deleldlfl ldkld" image={images.friends[1]} />
-          <CommentPost like={4}  name="Majesty" description="how to stay consistent to this end dkdkd deleldlfl ldkld" image={images.friends[1]} />
-       </View>
-        </ScrollView>
+            {commentData.map((item,index) => (
+              <CommentPost
+              key={index}
+                like={item.like}
+                name={item.name}
+                description={item.description}
+                image={item.image}
+              />
+            ))}
+          </ScrollView>
 
-        <View style={styles.imageCont}>
-          <Input />
-        </View>
+          <View style={styles.imageCont}>
+            <Input />
+          </View>
         </View>
       </View>
     </Modal>
@@ -73,27 +92,25 @@ const styles = StyleSheet.create({
     height: Sizes.height,
   },
   modalView: {
-    backgroundColor: "white",
+    backgroundColor: Colors.white,
     alignItems: "center",
     width: "100%",
     height: "100%",
     paddingTop: 20,
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
   },
   header: {
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    borderBottomWidth: .5,
-    paddingBottom: 5
-    
-    
+    borderBottomWidth: 0.5,
+    paddingBottom: 5,
   },
   headerText: {
     ...Fonts.h3,
     marginLeft: 15,
-    color: Colors.darkgray
+    color: Colors.darkgray,
   },
   closeBtn: {
     ...Fonts.body1,
@@ -102,18 +119,17 @@ const styles = StyleSheet.create({
   content: {
     width: Sizes.width,
     position: "relative",
-    
   },
-description: {
-  borderBottomWidth: .2,
-  width: "100%",
-  paddingBottom: 2
-},
-imageCont: {
-  width: "100%",
-  flexDirection: "row",
-  borderTopWidth: 0.3
-}
+  description: {
+    borderBottomWidth: 0.2,
+    width: "100%",
+    paddingBottom: 2,
+  },
+  imageCont: {
+    width: "100%",
+    flexDirection: "row",
+    borderTopWidth: 0.3,
+  },
 });
 
 export default Comment;

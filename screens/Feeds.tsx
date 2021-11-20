@@ -15,14 +15,18 @@ import images from "../constants/Images";
 import { Sizes, Colors, Fonts } from "../constants/Layout";
 import { feedProp } from "../constants/Types";
 import Comment from "../components/Comment"
-import { data } from "../constants/data";
+import { data, postData } from "../constants/data";
 import ImageModal from "../components/ViewImage";
 
 
 
 const Feeds = ({navigation}: feedProp) => {
-  
-  //RENDERIN POST COMPONENT
+ //RENDERING POST COMPONENTS
+ const postComponent = ({item}: any) => (
+   <Post navigation={navigation} handle={handleModal} image={item.image} title={item.title} description={item.description} />
+ )
+
+  //RENDERIN FRIENDS COMPONENT
     const renderItem = ({item}: any) => (
         <Friends title={item.title} image={item.img} />
     );
@@ -33,14 +37,8 @@ const Feeds = ({navigation}: feedProp) => {
  const handleModal = () : void => {
    setModal(prev => !prev)
  };
+
  
- //image modal state
- const [viewImage, setViewImage] = React.useState<boolean>(false)
-
- //handling modal state
-const handleViewImage = () : void => {setViewImage(prev => !prev)}
-
-
 
   return (
     <View style={styles.main}>
@@ -65,13 +63,18 @@ const handleViewImage = () : void => {setViewImage(prev => !prev)}
          showsHorizontalScrollIndicator={false}
          />
      </View>
-   <Comment visibility={modal} handle={handleModal} />
-   <ScrollView>     
+     <Comment visibility={modal} handle={handleModal} />
      <View style={styles.postCont}>
-       <Post navigation={navigation} handle={handleModal} image={images.post[0]} title="Concept designed" description="how to stay constitent to this end " />
-       <Post navigation={navigation} image={images.post[1]} title="Concept designed" description="" />
+      <FlatList 
+      style={styles.postContainer}
+      data={postData}
+      renderItem={postComponent}
+      keyExtractor= {item => item.id}
+      showsVerticalScrollIndicator={false}
+      />
+      <View style={styles.clearBottom}></View>
      </View>
-     </ScrollView>
+     
     
     </View>
   );
@@ -105,9 +108,16 @@ postCont: {
   justifyContent: "center",
   width: Sizes.width,
   alignItems: "center",
-  overflow: "hidden",
-  paddingBottom: 70,
-}
+  overflow: "hidden", 
+}, 
+postContainer: {
+ padding: 1 ,
+ marginBottom:150
+},
+clearBottom: {
+  width: "100%",
+},
+
 });
 
 export default Feeds;
