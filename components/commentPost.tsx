@@ -12,7 +12,7 @@ const commentPost = ({ name, description, image, like }: commentPostProp) => {
     setIsPress((prev) => !prev);
   };
   return (
-    <View
+    <TouchableOpacity
       style={{
         marginTop: 10,
         width: "100%",
@@ -113,7 +113,7 @@ const commentPost = ({ name, description, image, like }: commentPostProp) => {
           </TouchableOpacity>)}
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

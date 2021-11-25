@@ -3,12 +3,12 @@ import { View, Text, StyleSheet } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Home from '../screens/Home';
 import { HomeTabParams } from '../constants/Types';
-import Search from '../screens/Search';
 import PostScreen from '../screens/PostScreen';
 import Favorite from '../screens/Favorite';
 import Profile from '../screens/Profile';
-import { AntDesign, Entypo, EvilIcons, Feather } from '@expo/vector-icons';
+import { AntDesign, Entypo, EvilIcons, Feather, Ionicons } from '@expo/vector-icons';
 import { Colors } from '../constants/Layout';
+import Chat from '../screens/Chat';
 
 
 const Tab = createBottomTabNavigator<HomeTabParams>();
@@ -25,7 +25,7 @@ const Main = () => {
                backgroundColor: "white",
                padding: 0,
                position: "absolute",
-            
+              zIndex: 66 
            },
          
        }}
@@ -41,12 +41,12 @@ const Main = () => {
                )
            }}
            />
-           <Tab.Screen name="Search" component={Search}
+           <Tab.Screen name="Chat" component={Chat}
            options={{
                tabBarIcon: ({focused}) => (
                    <View style={[styles.iconCont]}>
                        <View>
-                           <EvilIcons name="search" size={35} color={focused ? Colors.secondary : Colors.black} />
+                           <Ionicons name="chatbox-ellipses-outline" size={25} color={focused ? Colors.secondary : Colors.black} />
                        </View>
                    </View>
                )
@@ -64,7 +64,7 @@ const Main = () => {
                        bottom: 15,
                        borderWidth: 5,
                        borderColor: "#ddd",
-                       zIndex: 999
+                       zIndex: 66
                        
                    }} >
                        <View>

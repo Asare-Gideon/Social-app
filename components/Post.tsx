@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Sizes, Colors, Fonts } from "../constants/Layout";
 import { postProp } from "../constants/Types";
 
-const Post = ({ title, image, description, navigation, handle }: postProp) => {
+const Post = ({ title, image, description, navigation, handle,name }: postProp) => {
   const [isWidth, setIsWidth] = React.useState<Boolean>(false);
 
   React.useEffect(() => {
@@ -24,6 +24,13 @@ const Post = ({ title, image, description, navigation, handle }: postProp) => {
         paddingBottom: 10
       }}
     >
+      <Text style={{
+        ...Fonts.style2,
+        paddingBottom: 3,
+        paddingLeft: 3,
+        color: Colors.deepDarkGray,
+        fontSize: 14
+      }}>{name}</Text>
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("ViewImage", {

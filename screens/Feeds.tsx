@@ -23,7 +23,7 @@ import ImageModal from "../components/ViewImage";
 const Feeds = ({navigation}: feedProp) => {
  //RENDERING POST COMPONENTS
  const postComponent = ({item}: any) => (
-   <Post navigation={navigation} handle={handleModal} image={item.image} title={item.title} description={item.description} />
+   <Post name={item.name} navigation={navigation} handle={handleModal} image={item.image} title={item.title} description={item.description} />
  )
 
   //RENDERIN FRIENDS COMPONENT
@@ -47,8 +47,9 @@ const Feeds = ({navigation}: feedProp) => {
         <View style={styles.innerBar}>
           <Text style={styles.barText}>My Feeds</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.navigate("Nottification")} >
           <Ionicons name="notifications-outline" size={25} color={Colors.darkgray} />
+          <View style={styles.alert}></View>
 
         </TouchableOpacity>
       </View>
@@ -71,6 +72,7 @@ const Feeds = ({navigation}: feedProp) => {
       renderItem={postComponent}
       keyExtractor= {item => item.id}
       showsVerticalScrollIndicator={false}
+      contentContainerStyle={{paddingBottom: 70}}
       />
       <View style={styles.clearBottom}></View>
      </View>
@@ -117,6 +119,15 @@ postContainer: {
 clearBottom: {
   width: "100%",
 },
+alert: {
+  position: "absolute",
+  width: 5,
+  height: 5,
+  top: 0,
+  left: 10,
+  borderRadius: 5,
+  backgroundColor: "red"
+}
 
 });
 

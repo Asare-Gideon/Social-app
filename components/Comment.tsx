@@ -25,14 +25,7 @@ interface commentProp {
 const Comment = ({ visibility, handle }: commentProp) => {
   const [modalVisible, setModalVisible] = useState(visibility);
 
-  const rederCommentPost = ({ item }: any) => (
-    <CommentPost
-      like={item.like}
-      name={item.name}
-      description={item.description}
-      image={item.image}
-    />
-  );
+
 
   return (
     <Modal

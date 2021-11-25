@@ -18,18 +18,28 @@ export type initialPageProp = NativeStackScreenProps<
 
 export type HomeTabParams = {
   Home: undefined;
-  Search: undefined;
+  Chat: undefined;
   Post: undefined;
   Favorites: undefined;
   Profile: undefined;
 };
+export type ChatNavParams = {
+  InitialChat : undefined,
+  InnerChat: undefined,
+}
+export type ChatScreenProps = NativeStackScreenProps<ChatNavParams, "InitialChat">
 
 export type homePageProp = BottomTabScreenProps<HomeTabParams, "Home">;
 
 export type MainpageParams = {
   Feeds: undefined;
   ViewImage: { description: String | undefined; image: ImageSourcePropType };
+  Nottification: undefined;
 };
+export interface mainpageProp {
+  route: RouteProp<HomeTabParams, "Home">;
+  navigation: NativeStackNavigationProp<HomeTabParams, "Home">;
+}
 
 export type feedProp = NativeStackScreenProps<MainpageParams, "Feeds">;
 
@@ -44,6 +54,7 @@ export interface postProp {
   description?: String | undefined;
   navigation: NativeStackNavigationProp<MainpageParams, "Feeds">;
   handle?: () => void;
+  name : String;
 }
 
 export interface commentPostProp {
@@ -67,6 +78,7 @@ export type postDatType = {
   title: string;
   image: ImageSourcePropType;
   description: String;
+  name: String
 }[];
 
 
@@ -77,3 +89,20 @@ export type commentDatType = {
   description: String;
   like : number
 }[];
+
+export interface messageProp {
+  name: string;
+  message: string;
+  time: number,
+  image: ImageSourcePropType;
+  handle: () => void;
+  number: number,
+}
+export type messageDataType = {
+  id : string;
+  name: string;
+  message : string,
+  time: number;
+  image: ImageSourcePropType;
+  number: number
+}[]; 
