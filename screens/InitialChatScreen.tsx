@@ -10,9 +10,10 @@ import {
 import Message from "../components/Message";
 import { messageData } from "../constants/data";
 import { Colors, Fonts, Sizes } from "../constants/Layout";
-import { ChatScreenProps } from "../constants/Types";
+import {initialChatScreenProps } from "../constants/Types";
 
-const InitialChatScreen = ({ navigation }: ChatScreenProps) => {
+const InitialChatScreen = ({ navigation }: initialChatScreenProps) => {
+ console.log("state " + navigation.getState().routeNames)
   var message =
     "how to stay consistent to this end how to stay consistent to this end the he";
   console.log(message.length);

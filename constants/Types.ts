@@ -4,7 +4,7 @@ import {
 } from "@react-navigation/native-stack";
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { ImageSourcePropType } from "react-native";
-import { RouteProp } from "@react-navigation/core";
+import { CompositeNavigationProp, RouteProp } from "@react-navigation/core";
 
 export type MainStackParams = {
   InitialPage: undefined;
@@ -18,16 +18,20 @@ export type initialPageProp = NativeStackScreenProps<
 
 export type HomeTabParams = {
   Home: undefined;
-  Chat: undefined;
+  Chat: NativeStackNavigationProp<ChatNavParams, "InitialChat">;
   Post: undefined;
   Favorites: undefined;
   Profile: undefined;
 };
+
 export type ChatNavParams = {
-  InitialChat : undefined,
-  InnerChat: undefined,
-}
-export type ChatScreenProps = NativeStackScreenProps<ChatNavParams, "InitialChat">
+  InitialChat: undefined;
+  InnerChat: undefined;
+};
+export type initialChatScreenProps = NativeStackScreenProps<
+  ChatNavParams,
+  "InitialChat"
+>;
 
 export type homePageProp = BottomTabScreenProps<HomeTabParams, "Home">;
 
@@ -39,6 +43,13 @@ export type MainpageParams = {
 export interface mainpageProp {
   route: RouteProp<HomeTabParams, "Home">;
   navigation: NativeStackNavigationProp<HomeTabParams, "Home">;
+}
+export interface chatScreenProp {
+  route: RouteProp<HomeTabParams, "Chat">;
+  navigation: CompositeNavigationProp<
+    NativeStackNavigationProp<HomeTabParams, "Chat">,
+    NativeStackNavigationProp<HomeTabParams>
+  >;
 }
 
 export type feedProp = NativeStackScreenProps<MainpageParams, "Feeds">;
@@ -54,7 +65,7 @@ export interface postProp {
   description?: String | undefined;
   navigation: NativeStackNavigationProp<MainpageParams, "Feeds">;
   handle?: () => void;
-  name : String;
+  name: String;
 }
 
 export interface commentPostProp {
@@ -78,31 +89,30 @@ export type postDatType = {
   title: string;
   image: ImageSourcePropType;
   description: String;
-  name: String
+  name: String;
 }[];
-
 
 export type commentDatType = {
   id: string;
   name: string;
   image: ImageSourcePropType;
   description: String;
-  like : number
+  like: number;
 }[];
 
 export interface messageProp {
   name: string;
   message: string;
-  time: number,
-  image: ImageSourcePropType;
-  handle: () => void;
-  number: number,
-}
-export type messageDataType = {
-  id : string;
-  name: string;
-  message : string,
   time: number;
   image: ImageSourcePropType;
-  number: number
-}[]; 
+  handle: () => void;
+  number: number;
+}
+export type messageDataType = {
+  id: string;
+  name: string;
+  message: string;
+  time: number;
+  image: ImageSourcePropType;
+  number: number;
+}[];

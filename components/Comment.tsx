@@ -1,22 +1,18 @@
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
-  Alert,
   Modal,
   StyleSheet,
   Text,
-  Pressable,
   View,
   TouchableOpacity,
   ScrollView,
-  Image,
-  FlatList,
 } from "react-native";
 import { Colors, Fonts, Sizes } from "../constants/Layout";
 import CommentPost from "../components/commentPost";
 import images from "../constants/Images";
 import Input from "./Input";
-import { commentData, postData } from "../constants/data";
+import { commentData } from "../constants/data";
 
 interface commentProp {
   visibility: boolean;
@@ -24,8 +20,6 @@ interface commentProp {
 }
 const Comment = ({ visibility, handle }: commentProp) => {
   const [modalVisible, setModalVisible] = useState(visibility);
-
-
 
   return (
     <Modal
@@ -48,7 +42,6 @@ const Comment = ({ visibility, handle }: commentProp) => {
             </TouchableOpacity>
             <Text style={styles.headerText}>Comments</Text>
           </View>
-
           <ScrollView style={styles.content}>
             <View style={styles.description}>
               <CommentPost
@@ -57,7 +50,6 @@ const Comment = ({ visibility, handle }: commentProp) => {
                 image={images.post[0]}
               />
             </View>
-
             {commentData.map((item,index) => (
               <CommentPost
               key={index}
@@ -67,7 +59,7 @@ const Comment = ({ visibility, handle }: commentProp) => {
                 image={item.image}
               />
             ))}
-          </ScrollView>
+         </ScrollView>
 
           <View style={styles.imageCont}>
             <Input />
@@ -107,7 +99,7 @@ const styles = StyleSheet.create({
   },
   closeBtn: {
     ...Fonts.body1,
-    padding: 3,
+    padding:3,
   },
   content: {
     width: Sizes.width,

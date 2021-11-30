@@ -1,13 +1,14 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react'
 import { View, Text } from 'react-native'
-import { ChatNavParams } from '../constants/Types';
+import { ChatNavParams, chatScreenProp } from '../constants/Types';
 import InitialChatScreen from './InitialChatScreen';
 import InnerChat from './InnerChat';
 
 const Stack = createNativeStackNavigator<ChatNavParams>();
 
-const Chat = () => {
+const Chat = ({route,navigation}: chatScreenProp) => {
+
     return (
        <Stack.Navigator 
        screenOptions={{

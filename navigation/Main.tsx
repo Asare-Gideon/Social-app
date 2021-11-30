@@ -13,6 +13,7 @@ import Chat from '../screens/Chat';
 
 const Tab = createBottomTabNavigator<HomeTabParams>();
 
+
 const Main = () => {
     return (
        <Tab.Navigator
@@ -27,6 +28,7 @@ const Main = () => {
                position: "absolute",
               zIndex: 66 
            },
+           
          
        }}
        >

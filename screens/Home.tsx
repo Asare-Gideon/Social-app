@@ -8,7 +8,7 @@ import Nottification from "./Nottification";
 
 const Stack = createNativeStackNavigator<MainpageParams>();
 const Home = ({route, navigation}: mainpageProp) => {
- console.log("state " + navigation.getState().routeNames)
+
 
   return (
     <Stack.Navigator
